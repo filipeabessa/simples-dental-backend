@@ -4,7 +4,6 @@ import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessiona
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,10 +11,16 @@ import static org.mockito.Mockito.when;
 
 
 import com.filipe.bessa.teste.simples.dental.professionals.dto.ProfessionalDetailsDTO;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
@@ -27,8 +32,17 @@ class ProfessionalServiceImplTest {
     @Mock
     private ProfessionalRepository professionalRepository;
 
-    @InjectMocks
     private ProfessionalServiceImpl professionalService;
+
+    Professional professional = new Professional(
+            1L,
+            "Filipe",
+            Position.DEVELOPER,
+            LocalDate.of(1997,7,21),
+            new ArrayList<>(),
+            LocalDateTime.of(2021, 7, 21, 0, 0),
+            LocalDateTime.of(2021, 7, 21, 0, 0)
+    );
 
     @BeforeEach
     void setUp() {
@@ -57,5 +71,27 @@ class ProfessionalServiceImplTest {
         assertEquals(Position.DEVELOPER, professionalDetails.position());
         assertEquals(LocalDate.of(1997,7,21), professionalDetails.birthDate());
         verify(professionalRepository, times(1)).save(professional);
+    }
+
+    @Test
+    void getProfessionalsShouldReturnProfessionalsPage() {
+        // arrange
+        List<Professional> professionals = new ArrayList<>();
+        professionals.add(professional);
+
+        Pageable pageable = PageRequest.of(0, 5);
+        Page<Professional> professionalsPage = new PageImpl<>(professionals, pageable, professionals.size());
+
+        when(professionalRepository.findAll(any(Pageable.class))).thenReturn(professionalsPage);
+
+        // act
+        Page<ProfessionalDetailsDTO> professionalsDetailsPage = professionalService.getProfessionals(pageable);
+
+        // assert
+        assertNotNull(professionalsDetailsPage);
+        assertEquals(1, professionalsDetailsPage.getTotalElements());
+        assertEquals(1, professionalsDetailsPage.getTotalPages());
+        assertEquals(1, professionalsDetailsPage.getContent().size());
+        assertEquals(new ProfessionalDetailsDTO(professional), professionalsDetailsPage.getContent().get(0));
     }
 }

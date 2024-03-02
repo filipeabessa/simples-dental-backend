@@ -5,6 +5,7 @@ import com.filipe.bessa.teste.simples.dental.professionals.dto.ProfessionalDetai
 import com.filipe.bessa.teste.simples.dental.professionals.dto.UpdateProfessionalDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
@@ -19,7 +20,7 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     @Override
-    public Page<ProfessionalDetailsDTO> getProfessionals() {
+    public Page<ProfessionalDetailsDTO> getProfessionals(Pageable pagination) {
         System.out.println("Getting professionals");
         return null;
     }

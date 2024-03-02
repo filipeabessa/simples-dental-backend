@@ -182,4 +182,27 @@ class ProfessionalServiceImplTest {
 
         verify(professionalRepository, times(0)).save(any(Professional.class));
     }
+
+    @Test
+    void deleteProfessionalShouldDeleteProfessional() {
+        // arrange
+        when(professionalRepository.findById(1L)).thenReturn(Optional.of(professional));
+
+        // act
+        professionalService.deleteProfessional(1L);
+
+        // assert
+        verify(professionalRepository, times(1)).delete(professional);
+    }
+
+    @Test
+    void deleteProfessionalShouldThrowBusinessException() {
+        when(professionalRepository.findById(1L)).thenReturn(Optional.empty());
+
+        assertThrows(BusinessException.class, () -> {
+            professionalService.deleteProfessional(1L);
+        }, "Professional not found");
+
+        verify(professionalRepository, times(0)).delete(any(Professional.class));
+    }
 }

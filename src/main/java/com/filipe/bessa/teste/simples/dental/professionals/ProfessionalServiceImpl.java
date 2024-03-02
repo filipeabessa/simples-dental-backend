@@ -51,6 +51,12 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 
     @Override
     public void deleteProfessional(Long id) {
-        System.out.println("Deleting professional");
+        Professional professional = professionalRepository.findById(id).orElse(null);
+
+        if (professional == null) {
+            throw new BusinessException("Professional not found");
+        }
+        professionalRepository.delete(professional);
+
     }
 }

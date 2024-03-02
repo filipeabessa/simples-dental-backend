@@ -21,8 +21,7 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 
     @Override
     public Page<ProfessionalDetailsDTO> getProfessionals(Pageable pagination) {
-        System.out.println("Getting professionals");
-        return null;
+        return professionalRepository.findAll(pagination).map(ProfessionalDetailsDTO::new);
     }
 
     @Override

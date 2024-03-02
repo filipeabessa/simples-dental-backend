@@ -79,6 +79,17 @@ public class Professional {
         this.updatedAt = updatedAt;
     }
 
+    public List<Contact> getContacts() {
+        return new ArrayList<>(contacts);
+    }
+    public void addContact(Contact contact) {
+        this.contacts.add(contact);
+    }
+
+    public void removeContact(Contact contact) {
+        this.contacts.remove(contact);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

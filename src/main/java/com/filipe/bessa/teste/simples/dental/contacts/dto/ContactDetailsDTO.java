@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 public record ContactDetailsDTO(
         Long id,
+        Long professionalId,
         String name,
         String contact,
         LocalDateTime createdAt,
@@ -14,6 +15,7 @@ public record ContactDetailsDTO(
     public ContactDetailsDTO(Contact contactObj) {
         this(
                 contactObj.getId(),
+                contactObj.getProfessional().getId(),
                 contactObj.getName(),
                 contactObj.getContact(),
                 contactObj.getCreatedAt(),

@@ -57,11 +57,19 @@ public class Contact {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Contact contactObj)) return false;
-        return getId().equals(contactObj.getId());
+        if (contactObj.getId() != null && getId() != null) {
+            return getId().equals(contactObj.getId());
+        }
+
+        return name.equals(contactObj.name) && contact.equals(contactObj.contact);
     }
 
     @Override
     public int hashCode() {
         return getId().hashCode();
+    }
+
+    public void setProfessional(Professional professional) {
+        this.professional = professional;
     }
 }

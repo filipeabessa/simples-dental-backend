@@ -22,9 +22,9 @@ public class ProfessionalController {
     private final ProfessionalService professionalService;
 
     @PostMapping()
-    public ResponseEntity<String> createProfessional(@RequestBody @Valid CreateProfessionalDTO createProfessionalDTO) {
-        professionalService.createProfessional(createProfessionalDTO);
-        return ResponseEntity.ok("Professional created");
+    public ResponseEntity<ProfessionalDetailsDTO> createProfessional(@RequestBody @Valid CreateProfessionalDTO createProfessionalDTO) {
+        var professionalDetails = professionalService.createProfessional(createProfessionalDTO);
+        return ResponseEntity.ok(professionalDetails);
     }
 
     @GetMapping()

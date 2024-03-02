@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +34,7 @@ public class ProfessionalController {
             @PageableDefault(size = 10, sort = {"name"}) Pageable pagination
     ) {
         var professionals = professionalService.getProfessionals(pagination);
-        return ResponseEntity.ok(professionals);
+        return ResponseEntity.status(HttpStatus.CREATED).body(professionals);
     }
 
     @GetMapping("/{id}")

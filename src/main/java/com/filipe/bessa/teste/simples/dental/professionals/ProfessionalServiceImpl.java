@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @Service
 public class ProfessionalServiceImpl implements ProfessionalService {
@@ -37,7 +39,14 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 
     @Override
     public void updateProfessional(UpdateProfessionalDTO updateProfessionalDTO) {
-        System.out.println("Updating professional");
+        Professional professional = professionalRepository.findById(updateProfessionalDTO.id()).orElse(null);
+
+        if (professional == null) {
+            throw new BusinessException("Professional not found");
+        }
+        professional.setUpdatedAt(LocalDateTime.now());
+
+        professionalRepository.save(professional);
     }
 
     @Override

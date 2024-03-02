@@ -2,6 +2,7 @@ package com.filipe.bessa.teste.simples.dental.professionals;
 
 import com.filipe.bessa.teste.simples.dental.exception.BusinessException;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.dto.UpdateProfessionalDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -123,5 +124,44 @@ class ProfessionalServiceImplTest {
        assertThrows(BusinessException.class, () -> {
            professionalService.getProfessional(1L);
        }, "Professional not found");
+    }
+
+    @Test
+    void updateProfessionalShouldUpdateProfessional() {
+        // arrange
+        UpdateProfessionalDTO updateProfessionalDTO = new UpdateProfessionalDTO(
+                1L,
+                "Gabriel",
+                Position.DESIGNER,
+                LocalDate.of(1998,7,21),
+                new ArrayList<>()
+        );
+        LocalDateTime updatedAt = LocalDateTime.now();
+
+        Professional updatedProfessional = new Professional(
+                1L,
+                "Gabriel",
+                Position.DESIGNER,
+                LocalDate.of(1998,7,21),
+                new ArrayList<>(),
+                professional.getCreatedAt(),
+                updatedAt
+        );
+
+        when(professionalRepository.findById(1L)).thenReturn(Optional.of(professional));
+        when(professionalRepository.save(any(Professional.class))).thenReturn(updatedProfessional);
+
+
+        // act
+        professionalService.updateProfessional(updateProfessionalDTO);
+
+        // assert
+        verify(professionalRepository, times(1)).save(updatedProfessional);
+        assertEquals("Gabriel", updatedProfessional.getName());
+        assertEquals(Position.DESIGNER, updatedProfessional.getPosition());
+        assertEquals(LocalDate.of(1998,7,21), updatedProfessional.getBirthDate());
+        assertEquals(new ArrayList<>(), updatedProfessional.getContacts());
+        assertEquals(professional.getCreatedAt(), updatedProfessional.getCreatedAt());
+        assertEquals(updatedAt, updatedProfessional.getUpdatedAt());
     }
 }

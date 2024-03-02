@@ -1,5 +1,6 @@
 package com.filipe.bessa.teste.simples.dental.contacts;
 
+import com.filipe.bessa.teste.simples.dental.contacts.dto.CreateContactDTO;
 import com.filipe.bessa.teste.simples.dental.professionals.Professional;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,6 +34,12 @@ public class Contact {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
+    public Contact(CreateContactDTO createContactDTO) {
+        this.name = createContactDTO.name();
+        this.contact = createContactDTO.contact();
+        this.createdAt = LocalDateTime.now();
+    }
 
     public void setName(String name) {
         this.name = name;

@@ -1,5 +1,6 @@
 package com.filipe.bessa.teste.simples.dental.professionals;
 
+import com.filipe.bessa.teste.simples.dental.exception.BusinessException;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.ProfessionalDetailsDTO;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.UpdateProfessionalDTO;
@@ -26,8 +27,12 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 
     @Override
     public ProfessionalDetailsDTO getProfessional(Long id) {
-        System.out.println("Getting professional");
-        return null;
+        var professional = professionalRepository.findById(id).orElse(null);
+
+        if (professional == null) {
+            throw new BusinessException("Professional not found");
+        }
+        return new ProfessionalDetailsDTO(professional);
     }
 
     @Override

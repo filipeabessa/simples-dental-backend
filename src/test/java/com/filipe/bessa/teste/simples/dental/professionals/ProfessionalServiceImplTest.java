@@ -1,5 +1,6 @@
 package com.filipe.bessa.teste.simples.dental.professionals;
 
+import com.filipe.bessa.teste.simples.dental.exception.BusinessException;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,6 +8,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 
@@ -115,14 +118,10 @@ class ProfessionalServiceImplTest {
 
     @Test
     void getProfessionalShouldReturnNull() {
-        // arrange
         when(professionalRepository.findById(1L)).thenReturn(Optional.empty());
 
-        // act
-        ProfessionalDetailsDTO professionalDetails = professionalService.getProfessional(1L);
-
-        // assert
-        assertEquals(null, professionalDetails);
-        verify(professionalRepository, times(1)).findById(1L);
+       assertThrows(BusinessException.class, () -> {
+           professionalService.getProfessional(1L);
+       }, "Professional not found");
     }
 }

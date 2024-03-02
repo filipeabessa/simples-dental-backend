@@ -1,6 +1,7 @@
 package com.filipe.bessa.teste.simples.dental.professionals;
 
 import com.filipe.bessa.teste.simples.dental.contacts.Contact;
+import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -43,6 +44,15 @@ public class Professional {
 
     private LocalDateTime updatedAt;
 
+    public Professional(CreateProfessionalDTO createProfessionalDTO) {
+        this.name = createProfessionalDTO.name();
+        this.position = createProfessionalDTO.position();
+        this.birthDate = createProfessionalDTO.birthDate();
+        this.contacts = createProfessionalDTO.contacts();
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
+
     // Custom setter for contacts to maintain encapsulation
     public void setContacts(List<Contact> contacts) {
         if (this.contacts.isEmpty() && contacts != null) {
@@ -50,6 +60,9 @@ public class Professional {
         }
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public void setName(String name) {
         this.name = name;
     }
@@ -70,7 +83,14 @@ public class Professional {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Professional professional)) return false;
-        return getId().equals(professional.getId());
+
+        if (professional.getId() != null && getId() != null) {
+            return getId().equals(professional.getId());
+        }
+
+        return professional.getName().equals(getName()) &&
+                professional.getPosition().equals(getPosition()) &&
+                professional.getBirthDate().equals(getBirthDate());
     }
 
     @Override

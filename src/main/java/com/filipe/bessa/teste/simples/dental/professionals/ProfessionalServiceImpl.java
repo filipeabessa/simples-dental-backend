@@ -1,7 +1,7 @@
 package com.filipe.bessa.teste.simples.dental.professionals;
 
 import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.dto.GetProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.dto.ProfessionalDetailsDTO;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.UpdateProfessionalDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -9,18 +9,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProfessionalServiceImpl implements ProfessionalService {
     @Override
-    public void createProfessional(CreateProfessionalDTO createProfessionalDTO) {
+    public ProfessionalDetailsDTO createProfessional(CreateProfessionalDTO createProfessionalDTO) {
         System.out.println("Creating professional");
+        return null;
     }
 
     @Override
-    public Page<GetProfessionalDTO> getProfessionals() {
+    public Page<ProfessionalDetailsDTO> getProfessionals() {
         System.out.println("Getting professionals");
         return null;
     }
 
     @Override
-    public GetProfessionalDTO getProfessional(Long id) {
+    public ProfessionalDetailsDTO getProfessional(Long id) {
         System.out.println("Getting professional");
         return null;
     }

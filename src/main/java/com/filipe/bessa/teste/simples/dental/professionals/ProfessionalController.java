@@ -1,7 +1,7 @@
 package com.filipe.bessa.teste.simples.dental.professionals;
 
 import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.dto.GetProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.dto.ProfessionalDetailsDTO;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.UpdateProfessionalDTO;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -28,7 +28,7 @@ public class ProfessionalController {
     }
 
     @GetMapping()
-    public ResponseEntity<Page<GetProfessionalDTO>> getProfessionals(
+    public ResponseEntity<Page<ProfessionalDetailsDTO>> getProfessionals(
             @PageableDefault(size = 10, sort = {"name"}) Pageable pagination
     ) {
         var professionals = professionalService.getProfessionals();

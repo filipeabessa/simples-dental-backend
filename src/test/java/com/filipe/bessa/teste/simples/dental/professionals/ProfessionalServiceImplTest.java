@@ -164,4 +164,26 @@ class ProfessionalServiceImplTest {
         assertEquals(professional.getCreatedAt(), updatedProfessional.getCreatedAt());
         assertEquals(updatedAt, updatedProfessional.getUpdatedAt());
     }
+
+    @Test
+    void updateProfessionalShouldThrowBusinessException() {
+        // arrange
+        UpdateProfessionalDTO updateProfessionalDTO = new UpdateProfessionalDTO(
+                1L,
+                "Gabriel",
+                Position.DESIGNER,
+                LocalDate.of(1998,7,21),
+                new ArrayList<>()
+        );
+
+        when(professionalRepository.findById(1L)).thenReturn(Optional.empty());
+
+        // act
+        assertThrows(BusinessException.class, () -> {
+            professionalService.updateProfessional(updateProfessionalDTO);
+        }, "Professional not found");
+
+        // assert
+        verify(professionalRepository, times(0)).save(any(Professional.class));
+    }
 }

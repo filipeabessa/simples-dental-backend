@@ -21,6 +21,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
@@ -51,6 +52,7 @@ class ProfessionalServiceImplTest {
 
     @Test
     void createProfessionalShouldCreateProfessional() {
+        // arrange
         CreateProfessionalDTO createProfessionalDTO = new CreateProfessionalDTO(
                 "Filipe",
                 Position.DEVELOPER,
@@ -63,8 +65,10 @@ class ProfessionalServiceImplTest {
 
         when(professionalRepository.save(any())).thenReturn(savedProfessional);
 
+        // act
         ProfessionalDetailsDTO professionalDetails = professionalService.createProfessional(createProfessionalDTO);
 
+        // assert
         assertNotNull(professionalDetails);
         assertEquals(1L, professionalDetails.id());
         assertEquals("Filipe", professionalDetails.name());
@@ -93,5 +97,32 @@ class ProfessionalServiceImplTest {
         assertEquals(1, professionalsDetailsPage.getTotalPages());
         assertEquals(1, professionalsDetailsPage.getContent().size());
         assertEquals(new ProfessionalDetailsDTO(professional), professionalsDetailsPage.getContent().get(0));
+    }
+
+    @Test
+    void getProfessionalShouldReturnProfessional() {
+        // arrange
+        when(professionalRepository.findById(1L)).thenReturn(Optional.of(professional));
+
+        // act
+        ProfessionalDetailsDTO professionalDetails = professionalService.getProfessional(1L);
+
+        // assert
+        assertNotNull(professionalDetails);
+        assertEquals(new ProfessionalDetailsDTO(professional), professionalDetails);
+        verify(professionalRepository, times(1)).findById(1L);
+    }
+
+    @Test
+    void getProfessionalShouldReturnNull() {
+        // arrange
+        when(professionalRepository.findById(1L)).thenReturn(Optional.empty());
+
+        // act
+        ProfessionalDetailsDTO professionalDetails = professionalService.getProfessional(1L);
+
+        // assert
+        assertEquals(null, professionalDetails);
+        verify(professionalRepository, times(1)).findById(1L);
     }
 }

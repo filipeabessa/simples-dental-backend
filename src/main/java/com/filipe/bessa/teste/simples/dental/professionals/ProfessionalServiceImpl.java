@@ -29,21 +29,15 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 
     @Override
     public ProfessionalDetailsDTO getProfessional(Long id) {
-        var professional = professionalRepository.findById(id).orElse(null);
+        Professional professional = verifyProfessionalExists(id);
 
-        if (professional == null) {
-            throw new BusinessException("Professional not found");
-        }
         return new ProfessionalDetailsDTO(professional);
     }
 
     @Override
     public void updateProfessional(UpdateProfessionalDTO updateProfessionalDTO) {
-        Professional professional = professionalRepository.findById(updateProfessionalDTO.id()).orElse(null);
+        Professional professional = verifyProfessionalExists(updateProfessionalDTO.id());
 
-        if (professional == null) {
-            throw new BusinessException("Professional not found");
-        }
         professional.setUpdatedAt(LocalDateTime.now());
 
         professionalRepository.save(professional);
@@ -51,12 +45,17 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 
     @Override
     public void deleteProfessional(Long id) {
+        Professional professional = verifyProfessionalExists(id);
+        professionalRepository.delete(professional);
+
+    }
+
+    private Professional verifyProfessionalExists(Long id) {
         Professional professional = professionalRepository.findById(id).orElse(null);
 
         if (professional == null) {
             throw new BusinessException("Professional not found");
         }
-        professionalRepository.delete(professional);
-
+        return professional;
     }
 }

@@ -3,15 +3,19 @@ package com.filipe.bessa.teste.simples.dental.professionals;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.ProfessionalDetailsDTO;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.UpdateProfessionalDTO;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+@AllArgsConstructor
 @Service
 public class ProfessionalServiceImpl implements ProfessionalService {
+    ProfessionalRepository professionalRepository;
     @Override
     public ProfessionalDetailsDTO createProfessional(CreateProfessionalDTO createProfessionalDTO) {
-        System.out.println("Creating professional");
-        return null;
+        Professional savedProfessional = professionalRepository.save(new Professional(createProfessionalDTO));
+
+        return new ProfessionalDetailsDTO(savedProfessional);
     }
 
     @Override

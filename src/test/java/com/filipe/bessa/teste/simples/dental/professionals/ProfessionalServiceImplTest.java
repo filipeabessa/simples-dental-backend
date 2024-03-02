@@ -167,7 +167,6 @@ class ProfessionalServiceImplTest {
 
     @Test
     void updateProfessionalShouldThrowBusinessException() {
-        // arrange
         UpdateProfessionalDTO updateProfessionalDTO = new UpdateProfessionalDTO(
                 1L,
                 "Gabriel",
@@ -178,12 +177,10 @@ class ProfessionalServiceImplTest {
 
         when(professionalRepository.findById(1L)).thenReturn(Optional.empty());
 
-        // act
         assertThrows(BusinessException.class, () -> {
             professionalService.updateProfessional(updateProfessionalDTO);
         }, "Professional not found");
 
-        // assert
         verify(professionalRepository, times(0)).save(any(Professional.class));
     }
 }

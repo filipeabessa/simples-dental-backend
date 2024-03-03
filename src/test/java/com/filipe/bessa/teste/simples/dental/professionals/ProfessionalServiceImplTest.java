@@ -3,6 +3,7 @@ package com.filipe.bessa.teste.simples.dental.professionals;
 import com.filipe.bessa.teste.simples.dental.exception.BusinessException;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.UpdateProfessionalDTO;
+import domain.exception.ProfessionalNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -120,7 +121,7 @@ class ProfessionalServiceImplTest {
     void getProfessionalShouldThrowExceptionWhenProfessionalNotFound() {
         when(professionalRepository.findById(1L)).thenReturn(Optional.empty());
 
-       assertThrows(BusinessException.class, () -> {
+       assertThrows(ProfessionalNotFoundException.class, () -> {
            professionalService.getProfessional(1L);
        }, "Professional not found");
     }
@@ -176,7 +177,7 @@ class ProfessionalServiceImplTest {
 
         when(professionalRepository.findById(1L)).thenReturn(Optional.empty());
 
-        assertThrows(BusinessException.class, () -> {
+        assertThrows(ProfessionalNotFoundException.class, () -> {
             professionalService.updateProfessional(updateProfessionalDTO);
         }, "Professional not found");
 
@@ -199,7 +200,7 @@ class ProfessionalServiceImplTest {
     void deleteProfessionalShouldThrowBusinessException() {
         when(professionalRepository.findById(1L)).thenReturn(Optional.empty());
 
-        assertThrows(BusinessException.class, () -> {
+        assertThrows(ProfessionalNotFoundException.class, () -> {
             professionalService.deleteProfessional(1L);
         }, "Professional not found");
 

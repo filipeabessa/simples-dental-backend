@@ -3,9 +3,10 @@ package com.filipe.bessa.teste.simples.dental.contacts;
 import com.filipe.bessa.teste.simples.dental.contacts.dto.ContactDetailsDTO;
 import com.filipe.bessa.teste.simples.dental.contacts.dto.CreateContactDTO;
 import com.filipe.bessa.teste.simples.dental.contacts.dto.UpdateContactDTO;
-import com.filipe.bessa.teste.simples.dental.exception.BusinessException;
 import com.filipe.bessa.teste.simples.dental.professionals.Professional;
 import com.filipe.bessa.teste.simples.dental.professionals.ProfessionalRepository;
+import domain.exception.ContactNotFoundException;
+import domain.exception.ProfessionalNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -62,13 +63,13 @@ public class ContactServiceImpl implements ContactService {
 
     private Contact findContact(Long id) {
         return contactRepository.findById(id).orElseThrow(
-                () -> new BusinessException("Contact not found")
+                ContactNotFoundException::new
         );
     }
 
     private Professional findProfessional(Long id) {
         return professionalRepository.findById(id).orElseThrow(
-                () -> new BusinessException("Professional not found")
+                ProfessionalNotFoundException::new
         );
     }
 }

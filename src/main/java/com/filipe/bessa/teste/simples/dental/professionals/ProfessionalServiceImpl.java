@@ -1,10 +1,10 @@
 package com.filipe.bessa.teste.simples.dental.professionals;
 
 import com.filipe.bessa.teste.simples.dental.contacts.Contact;
-import com.filipe.bessa.teste.simples.dental.exception.BusinessException;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.ProfessionalDetailsDTO;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.UpdateProfessionalDTO;
+import domain.exception.ProfessionalNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -63,11 +63,8 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     private Professional verifyProfessionalExists(Long id) {
-        Professional professional = professionalRepository.findById(id).orElse(null);
-
-        if (professional == null) {
-            throw new BusinessException("Professional not found");
-        }
-        return professional;
+        return professionalRepository
+                .findById(id)
+                .orElseThrow(ProfessionalNotFoundException::new);
     }
 }

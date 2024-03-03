@@ -7,6 +7,8 @@ import com.filipe.bessa.teste.simples.dental.exception.BusinessException;
 import com.filipe.bessa.teste.simples.dental.professionals.Position;
 import com.filipe.bessa.teste.simples.dental.professionals.Professional;
 import com.filipe.bessa.teste.simples.dental.professionals.ProfessionalRepository;
+import domain.exception.ContactNotFoundException;
+import domain.exception.ProfessionalNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -91,7 +93,7 @@ class ContactServiceImplTest {
         when(professionalRepository.findById(1L)).thenReturn(Optional.empty());
 
         // act and assert
-        assertThrows(BusinessException.class, () -> {
+        assertThrows(ProfessionalNotFoundException.class, () -> {
             contactService.createContact(createContactDTO);
         }, "Professional not found");
     }
@@ -158,7 +160,7 @@ class ContactServiceImplTest {
         when(contactRepository.findById(1L)).thenReturn(Optional.empty());
 
         // act and assert
-        assertThrows(BusinessException.class, () -> {
+        assertThrows(ContactNotFoundException.class, () -> {
             contactService.getContact(1L);
         }, "Contact not found");
     }
@@ -204,7 +206,7 @@ class ContactServiceImplTest {
         when(contactRepository.findById(1L)).thenReturn(Optional.empty());
 
         // act and assert
-        assertThrows(BusinessException.class, () -> {
+        assertThrows(ContactNotFoundException.class, () -> {
             contactService.updateContact(updateContactDTO);
         }, "Contact not found");
     }
@@ -236,7 +238,7 @@ class ContactServiceImplTest {
         when(contactRepository.findById(1L)).thenReturn(Optional.empty());
 
         // act and assert
-        assertThrows(BusinessException.class, () -> {
+        assertThrows(ContactNotFoundException.class, () -> {
             contactService.deleteContact(1L);
         }, "Contact not found");
     }

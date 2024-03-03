@@ -80,7 +80,10 @@ public class Professional {
     }
 
     public List<Contact> getContacts() {
-        return new ArrayList<>(contacts);
+        if (this.contacts == null) {
+            return new ArrayList<>();
+        }
+        return List.copyOf(this.contacts);
     }
     public void addContact(Contact contact) {
         this.contacts.add(contact);

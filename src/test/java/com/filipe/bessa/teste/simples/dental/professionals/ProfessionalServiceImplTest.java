@@ -117,7 +117,7 @@ class ProfessionalServiceImplTest {
     }
 
     @Test
-    void getProfessionalShouldReturnNull() {
+    void getProfessionalShouldThrowExceptionWhenProfessionalNotFound() {
         when(professionalRepository.findById(1L)).thenReturn(Optional.empty());
 
        assertThrows(BusinessException.class, () -> {
@@ -165,7 +165,7 @@ class ProfessionalServiceImplTest {
     }
 
     @Test
-    void updateProfessionalShouldThrowBusinessException() {
+    void updateProfessionalShouldThrowExceptionWhenProfessionalNotFound() {
         UpdateProfessionalDTO updateProfessionalDTO = new UpdateProfessionalDTO(
                 1L,
                 "Gabriel",

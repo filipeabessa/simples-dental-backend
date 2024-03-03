@@ -63,7 +63,9 @@ public class Contact {
             return getId().equals(contactObj.getId());
         }
 
-        return name.equals(contactObj.name) && contact.equals(contactObj.contact);
+        return name.equals(contactObj.name)
+                && contact.equals(contactObj.contact)
+                && professional.equals(contactObj.professional);
     }
 
     @Override
@@ -73,5 +75,9 @@ public class Contact {
 
     public void setProfessional(Professional professional) {
         this.professional = professional;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

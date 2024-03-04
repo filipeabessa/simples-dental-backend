@@ -38,14 +38,10 @@ class ContactControllerTest {
     @MockBean
     private ContactService contactService;
 
-    private static ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private final String ENDPOINT_URL = "/contacts";
-
-    @BeforeAll
-    static void setUp() {
-        objectMapper = new ObjectMapper();
-    }
 
     @Test
     void createContactWithSuccess() throws Exception {

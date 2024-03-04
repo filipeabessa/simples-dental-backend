@@ -126,6 +126,8 @@ class ContactServiceImplTest {
         assertEquals(contact.getName(), contactDetailsDTOPage.getContent().get(0).name());
         assertEquals(contact.getContact(), contactDetailsDTOPage.getContent().get(0).contact());
         assertEquals(contact.getProfessional().getId(), contactDetailsDTOPage.getContent().get(0).professionalId());
+        assertEquals(contact.getCreatedAt(), contactDetailsDTOPage.getContent().get(0).createdAt());
+        assertEquals(contact.getUpdatedAt(), contactDetailsDTOPage.getContent().get(0).updatedAt());
     }
 
     @Test

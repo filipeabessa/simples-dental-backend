@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -18,8 +19,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -142,6 +145,34 @@ class ContactControllerTest {
     }
 
     @Test
+    void getContactsWithSucess() throws Exception {
+        LocalDateTime now = LocalDateTime.now();
+        String nowString = now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+
+        when(contactService.getContacts(any())).thenReturn(new PageImpl<>(List.of(
+                new ContactDetailsDTO(
+                        1L,
+                        1L,
+                        "Fixo",
+                        "11 1234-5678",
+                        now,
+                        now
+                )
+        )));
+
+        mockMvc.perform(MockMvcRequestBuilders.get(ENDPOINT_URL)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content[0].id").value(1))
+                .andExpect(jsonPath("$.content[0].professionalId").value(1))
+                .andExpect(jsonPath("$.content[0].name").value("Fixo"))
+                .andExpect(jsonPath("$.content[0].contact").value("11 1234-5678"))
+                .andExpect(jsonPath("$.content[0].createdAt").value(nowString))
+                .andExpect(jsonPath("$.content[0].updatedAt").value(nowString));
+    }
+
+    @Test
     void updateContactWithSuccess() throws Exception {
         var updateContactDTO = new UpdateContactDTO(
                 1L,
@@ -207,7 +238,6 @@ class ContactControllerTest {
     @Test
     void deleteContactWithNonExistingContact() throws Exception {
         doThrow(new ContactNotFoundException()).when(contactService).deleteContact(1L);
-
         mockMvc.perform(MockMvcRequestBuilders.delete(ENDPOINT_URL + "/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))

@@ -52,7 +52,7 @@ public class ApiErrorResponse {
         this();
         this.status = status;
         this.errorCode = status.value();
-        this.message = "Erro inesperado";
+        this.message = ex.getMessage();
         this.detailedMessage = ex.getLocalizedMessage();
     }
 

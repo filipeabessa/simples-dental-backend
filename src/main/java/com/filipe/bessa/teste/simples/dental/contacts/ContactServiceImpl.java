@@ -44,14 +44,14 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public void updateContact(UpdateContactDTO updateContactDTO) {
+    public ContactDetailsDTO updateContact(UpdateContactDTO updateContactDTO) {
         Contact contact = findContact(updateContactDTO.id());
 
         contact.setName(updateContactDTO.name() != null ? updateContactDTO.name() : contact.getName());
         contact.setContact(updateContactDTO.contact() != null ? updateContactDTO.contact() : contact.getContact());
         contact.setUpdatedAt(LocalDateTime.now());
 
-        contactRepository.save(contact);
+        return new ContactDetailsDTO(contactRepository.save(contact));
     }
 
     @Override

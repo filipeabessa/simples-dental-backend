@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 @AllArgsConstructor
 @RestController
+@RequestMapping("/contacts")
 public class ContactController {
     private ContactService contactService;
 
@@ -38,9 +39,9 @@ public class ContactController {
     }
 
     @PutMapping
-    public ResponseEntity<Void> updateContact(@RequestBody UpdateContactDTO updateContactDTO) {
-        contactService.updateContact(updateContactDTO);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<ContactDetailsDTO> updateContact(@RequestBody UpdateContactDTO updateContactDTO) {
+        var updatedContact = contactService.updateContact(updateContactDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedContact);
     }
 
     @DeleteMapping("/{id}")

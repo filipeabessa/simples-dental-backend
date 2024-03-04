@@ -13,7 +13,7 @@ public interface ContactService {
 
     ContactDetailsDTO getContact(Long id);
 
-    void updateContact(UpdateContactDTO updateContactDTO);
+    ContactDetailsDTO updateContact(UpdateContactDTO updateContactDTO);
 
     void deleteContact(Long id);
 }

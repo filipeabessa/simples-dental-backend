@@ -8,6 +8,7 @@ import jakarta.validation.ConstraintViolation;
 import lombok.Getter;
 import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 
@@ -23,7 +24,7 @@ public class ApiErrorResponse {
     private final LocalDateTime timestamp;
 
     @JsonProperty("status")
-    private HttpStatus status;
+    private HttpStatusCode status;
 
     @JsonProperty("codigoErro")
     private Integer errorCode;
@@ -47,7 +48,7 @@ public class ApiErrorResponse {
         this.errorCode = status.value();
     }
 
-    public ApiErrorResponse(HttpStatus status, Throwable ex) {
+    public ApiErrorResponse(HttpStatusCode status, Throwable ex) {
         this();
         this.status = status;
         this.errorCode = status.value();
@@ -55,7 +56,7 @@ public class ApiErrorResponse {
         this.detailedMessage = ex.getLocalizedMessage();
     }
 
-    public ApiErrorResponse(HttpStatus status, String message, Throwable ex) {
+    public ApiErrorResponse(HttpStatusCode status, String message, Throwable ex) {
         this();
         this.status = status;
         this.errorCode = status.value();
@@ -87,9 +88,9 @@ public class ApiErrorResponse {
         );
     }
 
-//    public void addValidationErrors(List<FieldError> fieldErrors) {
-//        fieldErrors.forEach(this::addValidationError);
-//    }
+    public void addValidationErrors(List<FieldError> fieldErrors) {
+        fieldErrors.forEach(this::addValidationError);
+    }
 
     public void addValidationError(ObjectError objectError) {
         this.addValidationError(
@@ -111,14 +112,14 @@ public class ApiErrorResponse {
         );
     }
 
-    public void addValidationErrors(List<ConstraintViolation<?>> constraintViolations) {
-        constraintViolations.forEach(this::addValidationError);
-    }
-
     public void setMessage(String message) {
         this.message = message;
     }
     public void setDetailedMessage(String detailedMessage) {
         this.detailedMessage = detailedMessage;
+    }
+
+    public void addBusinessSubError(String errorCode, String message) {
+        addSubError(new SubBusinessErrorResponse(errorCode, message));
     }
 }

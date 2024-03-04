@@ -10,6 +10,6 @@ public interface ProfessionalService {
     ProfessionalDetailsDTO createProfessional(CreateProfessionalDTO createProfessionalDTO);
     Page<ProfessionalDetailsDTO>getProfessionals(Pageable pagination);
     ProfessionalDetailsDTO getProfessional(Long id);
-    void updateProfessional(UpdateProfessionalDTO updateProfessionalDTO);
+    ProfessionalDetailsDTO updateProfessional(UpdateProfessionalDTO updateProfessionalDTO);
     void deleteProfessional(Long id);
 }

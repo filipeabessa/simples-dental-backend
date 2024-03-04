@@ -38,7 +38,7 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     @Override
-    public void updateProfessional(UpdateProfessionalDTO updateProfessionalDTO) {
+    public ProfessionalDetailsDTO updateProfessional(UpdateProfessionalDTO updateProfessionalDTO) {
         Professional professional = verifyProfessionalExists(updateProfessionalDTO.id());
 
         String name = updateProfessionalDTO.name();
@@ -52,7 +52,7 @@ public class ProfessionalServiceImpl implements ProfessionalService {
         professional.setContacts(contacts != null ? contacts : professional.getContacts());
         professional.setUpdatedAt(LocalDateTime.now());
 
-        professionalRepository.save(professional);
+        return new ProfessionalDetailsDTO(professionalRepository.save(professional));
     }
 
     @Override

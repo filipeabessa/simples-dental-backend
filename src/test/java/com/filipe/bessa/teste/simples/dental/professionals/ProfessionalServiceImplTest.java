@@ -1,6 +1,5 @@
 package com.filipe.bessa.teste.simples.dental.professionals;
 
-import com.filipe.bessa.teste.simples.dental.exception.BusinessException;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.UpdateProfessionalDTO;
 import domain.exception.ProfessionalNotFoundException;

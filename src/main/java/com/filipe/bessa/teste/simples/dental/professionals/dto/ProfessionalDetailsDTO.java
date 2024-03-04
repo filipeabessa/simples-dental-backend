@@ -13,6 +13,7 @@ public record ProfessionalDetailsDTO(
         Long id,
         String name,
         Position position,
+        @JsonFormat(pattern = "dd/MM/yyyy")
         LocalDate birthDate,
         List<Contact> contacts,
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")

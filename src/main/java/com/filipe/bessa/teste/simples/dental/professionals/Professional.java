@@ -3,6 +3,7 @@ package com.filipe.bessa.teste.simples.dental.professionals;
 import com.filipe.bessa.teste.simples.dental.contacts.Contact;
 import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -35,13 +36,16 @@ public class Professional {
     @Enumerated(EnumType.STRING)
     private Position position;
 
+    @Column(name = "birth_date")
     private LocalDate birthDate;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Contact> contacts = new ArrayList<>();
 
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     public Professional(CreateProfessionalDTO createProfessionalDTO) {

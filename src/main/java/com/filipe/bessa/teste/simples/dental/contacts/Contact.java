@@ -2,6 +2,7 @@ package com.filipe.bessa.teste.simples.dental.contacts;
 
 import com.filipe.bessa.teste.simples.dental.contacts.dto.CreateContactDTO;
 import com.filipe.bessa.teste.simples.dental.professionals.Professional;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,8 +34,10 @@ public class Contact {
 
     private String contact;
 
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     public Contact(CreateContactDTO createContactDTO) {

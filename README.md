@@ -4,7 +4,7 @@
 O objetivo deste teste é avaliar a capacidade do candidato em desenvolver uma API RESTful utilizando a linguagem Java e o framework Spring Boot.
 
 ## Requisitos
-- [Requisitos]((https://docs.google.com/document/d/1PQOAqM1Wmk_TdLmYzli2eS_CwRc4Z4QlrtMzDQkYd7k/edit?usp=sharing) )
+- [Requisitos](https://docs.google.com/document/d/1PQOAqM1Wmk_TdLmYzli2eS_CwRc4Z4QlrtMzDQkYd7k/edit?usp=sharing)
 
 ## Tecnologias Utilizadas
 

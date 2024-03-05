@@ -1,11 +1,15 @@
 package com.filipe.bessa.teste.simples.dental.contacts;
 
-import com.filipe.bessa.teste.simples.dental.contacts.dto.ContactDetailsDTO;
-import com.filipe.bessa.teste.simples.dental.contacts.dto.CreateContactDTO;
-import com.filipe.bessa.teste.simples.dental.contacts.dto.UpdateContactDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.Position;
-import com.filipe.bessa.teste.simples.dental.professionals.Professional;
-import com.filipe.bessa.teste.simples.dental.professionals.ProfessionalRepository;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.dto.ContactDetailsDTO;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.dto.CreateContactDTO;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.dto.UpdateContactDTO;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.Contact;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.ContactRepository;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.ContactService;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.ContactServiceImpl;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.Position;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.Professional;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.ProfessionalRepository;
 import domain.exception.ContactNotFoundException;
 import domain.exception.ProfessionalNotFoundException;
 import org.junit.jupiter.api.BeforeEach;

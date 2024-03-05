@@ -1,7 +1,8 @@
-package com.filipe.bessa.teste.simples.dental.contacts.dto;
+package com.filipe.bessa.teste.simples.dental.contacts.v1.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.filipe.bessa.teste.simples.dental.contacts.Contact;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.Contact;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDateTime;
 
@@ -11,8 +12,10 @@ public record ContactDetailsDTO(
         String name,
         String contact,
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
+        @Schema(type = "string", format = "dd/MM/yyyy HH:mm:ss")
         LocalDateTime createdAt,
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
+        @Schema(type = "string", format = "dd/MM/yyyy HH:mm:ss")
         LocalDateTime updatedAt
 ) {
     public ContactDetailsDTO(Contact contactObj) {

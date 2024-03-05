@@ -1,7 +1,7 @@
-package com.filipe.bessa.teste.simples.dental.professionals;
+package com.filipe.bessa.teste.simples.dental.professionals.v1;
 
-import com.filipe.bessa.teste.simples.dental.contacts.Contact;
-import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.Contact;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.CreateProfessionalDTO;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

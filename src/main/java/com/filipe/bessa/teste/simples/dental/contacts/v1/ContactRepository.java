@@ -1,4 +1,4 @@
-package com.filipe.bessa.teste.simples.dental.contacts;
+package com.filipe.bessa.teste.simples.dental.contacts.v1;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

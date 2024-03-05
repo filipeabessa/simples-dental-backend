@@ -1,9 +1,9 @@
-package com.filipe.bessa.teste.simples.dental.professionals;
+package com.filipe.bessa.teste.simples.dental.professionals.v1;
 
-import com.filipe.bessa.teste.simples.dental.contacts.Contact;
-import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.dto.ProfessionalDetailsDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.dto.UpdateProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.Contact;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.CreateProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.ProfessionalDetailsDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.UpdateProfessionalDTO;
 import domain.exception.ProfessionalNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;

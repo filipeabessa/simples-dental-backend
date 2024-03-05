@@ -1,4 +1,4 @@
-package com.filipe.bessa.teste.simples.dental.contacts.dto;
+package com.filipe.bessa.teste.simples.dental.contacts.v1.dto;
 
 public record CreateContactDTO(
         Long professionalId,

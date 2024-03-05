@@ -1,10 +1,10 @@
-package com.filipe.bessa.teste.simples.dental.contacts;
+package com.filipe.bessa.teste.simples.dental.contacts.v1;
 
-import com.filipe.bessa.teste.simples.dental.contacts.dto.ContactDetailsDTO;
-import com.filipe.bessa.teste.simples.dental.contacts.dto.CreateContactDTO;
-import com.filipe.bessa.teste.simples.dental.contacts.dto.UpdateContactDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.Professional;
-import com.filipe.bessa.teste.simples.dental.professionals.ProfessionalRepository;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.dto.ContactDetailsDTO;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.dto.CreateContactDTO;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.dto.UpdateContactDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.Professional;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.ProfessionalRepository;
 import domain.exception.ContactNotFoundException;
 import domain.exception.ProfessionalNotFoundException;
 import lombok.AllArgsConstructor;

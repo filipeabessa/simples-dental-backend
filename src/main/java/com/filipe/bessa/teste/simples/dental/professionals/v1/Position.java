@@ -1,4 +1,4 @@
-package com.filipe.bessa.teste.simples.dental.professionals;
+package com.filipe.bessa.teste.simples.dental.professionals.v1;
 
 public enum Position {
     DEVELOPER,

@@ -1,8 +1,8 @@
-package com.filipe.bessa.teste.simples.dental.professionals;
+package com.filipe.bessa.teste.simples.dental.professionals.v1;
 
-import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.dto.ProfessionalDetailsDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.dto.UpdateProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.CreateProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.ProfessionalDetailsDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.UpdateProfessionalDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

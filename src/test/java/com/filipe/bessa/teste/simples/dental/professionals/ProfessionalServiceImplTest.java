@@ -1,7 +1,11 @@
 package com.filipe.bessa.teste.simples.dental.professionals;
 
-import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.dto.UpdateProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.CreateProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.UpdateProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.Position;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.Professional;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.ProfessionalRepository;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.ProfessionalServiceImpl;
 import domain.exception.ProfessionalNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 
-import com.filipe.bessa.teste.simples.dental.professionals.dto.ProfessionalDetailsDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.ProfessionalDetailsDTO;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

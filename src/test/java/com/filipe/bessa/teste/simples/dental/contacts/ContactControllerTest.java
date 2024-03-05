@@ -1,12 +1,13 @@
 package com.filipe.bessa.teste.simples.dental.contacts;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.filipe.bessa.teste.simples.dental.contacts.dto.ContactDetailsDTO;
-import com.filipe.bessa.teste.simples.dental.contacts.dto.CreateContactDTO;
-import com.filipe.bessa.teste.simples.dental.contacts.dto.UpdateContactDTO;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.dto.ContactDetailsDTO;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.dto.CreateContactDTO;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.dto.UpdateContactDTO;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.ContactController;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.ContactService;
 import domain.exception.ContactNotFoundException;
 import domain.exception.ProfessionalNotFoundException;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

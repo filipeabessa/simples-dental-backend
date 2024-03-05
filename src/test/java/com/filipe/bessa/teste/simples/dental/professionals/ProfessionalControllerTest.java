@@ -1,13 +1,13 @@
 package com.filipe.bessa.teste.simples.dental.professionals;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.filipe.bessa.teste.simples.dental.professionals.dto.CreateProfessionalDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.dto.ProfessionalDetailsDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.dto.UpdateProfessionalDTO;
-import domain.exception.ContactNotFoundException;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.CreateProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.ProfessionalDetailsDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.UpdateProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.Position;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.ProfessionalController;
+import com.filipe.bessa.teste.simples.dental.professionals.v1.ProfessionalService;
 import domain.exception.ProfessionalNotFoundException;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -26,7 +26,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;

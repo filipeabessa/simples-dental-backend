@@ -1,9 +1,21 @@
+info:
+  app:
+    name: Teste tecnico Simples Dental
+    description: Teste tecnico para vaga de desenvolvedor Full Stack
+    version: v1.0.0
+    contact:
+      name: Filipe Bessa
+      email: filipegbessa@gmail.com
+
+server:
+  port: 8080
+
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5433/simplesdental
-    username: simplesdental
-    password: simplesdental
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
   jpa:
     show-sql: true
     properties:

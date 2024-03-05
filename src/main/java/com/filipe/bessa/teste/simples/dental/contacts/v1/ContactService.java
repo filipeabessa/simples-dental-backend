@@ -1,8 +1,8 @@
-package com.filipe.bessa.teste.simples.dental.contacts;
+package com.filipe.bessa.teste.simples.dental.contacts.v1;
 
-import com.filipe.bessa.teste.simples.dental.contacts.dto.ContactDetailsDTO;
-import com.filipe.bessa.teste.simples.dental.contacts.dto.CreateContactDTO;
-import com.filipe.bessa.teste.simples.dental.contacts.dto.UpdateContactDTO;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.dto.ContactDetailsDTO;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.dto.CreateContactDTO;
+import com.filipe.bessa.teste.simples.dental.contacts.v1.dto.UpdateContactDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

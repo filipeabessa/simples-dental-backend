@@ -1,0 +1,44 @@
+version: '3.7'
+services:
+    app:
+        build:
+          context: .
+          dockerfile: Dockerfile
+        ports:
+          - "8080:8080"
+        depends_on:
+          postgres:
+            condition: service_healthy
+        environment:
+          - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
+          - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER}
+          - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
+        networks:
+          - springboot-postgres-network
+        env_file:
+          - .env
+    postgres:
+        image: postgres:13.3
+        ports:
+        - "5432:5434"
+        environment:
+          - POSTGRES_DB=${POSTGRES_DB}
+          - POSTGRES_USER=${POSTGRES_USER}
+          - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+        volumes:
+          - postgres:/var/lib/postgresql/data
+        networks:
+          - springboot-postgres-network
+        healthcheck:
+          test: ["CMD", "pg_isready", "-U", "simplesdental"]
+          interval: 3s
+          timeout: 5s
+          retries: 10
+        env_file:
+          - .env
+networks:
+    springboot-postgres-network:
+        name: springboot-postgres-network
+volumes:
+    postgres:
+

@@ -1,13 +1,13 @@
 package com.filipe.bessa.teste.simples.dental.professionals;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.CreateProfessionalDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.ProfessionalDetailsDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.UpdateProfessionalDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.v1.Position;
-import com.filipe.bessa.teste.simples.dental.professionals.v1.ProfessionalController;
-import com.filipe.bessa.teste.simples.dental.professionals.v1.ProfessionalService;
-import domain.exception.ProfessionalNotFoundException;
+import com.filipe.bessa.teste.simples.dental.presentation.v1.professionals.dto.CreateProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.presentation.v1.professionals.dto.ProfessionalDetailsDTO;
+import com.filipe.bessa.teste.simples.dental.presentation.v1.professionals.dto.UpdateProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.domain.model.professionals.Position;
+import com.filipe.bessa.teste.simples.dental.presentation.v1.professionals.controller.ProfessionalController;
+import com.filipe.bessa.teste.simples.dental.application.v1.professional.ProfessionalService;
+import com.filipe.bessa.teste.simples.dental.domain.exception.ProfessionalNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

@@ -1,12 +1,12 @@
 package com.filipe.bessa.teste.simples.dental.professionals;
 
-import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.CreateProfessionalDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.UpdateProfessionalDTO;
-import com.filipe.bessa.teste.simples.dental.professionals.v1.Position;
-import com.filipe.bessa.teste.simples.dental.professionals.v1.Professional;
-import com.filipe.bessa.teste.simples.dental.professionals.v1.ProfessionalRepository;
-import com.filipe.bessa.teste.simples.dental.professionals.v1.ProfessionalServiceImpl;
-import domain.exception.ProfessionalNotFoundException;
+import com.filipe.bessa.teste.simples.dental.presentation.v1.professionals.dto.CreateProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.presentation.v1.professionals.dto.UpdateProfessionalDTO;
+import com.filipe.bessa.teste.simples.dental.domain.model.professionals.Position;
+import com.filipe.bessa.teste.simples.dental.domain.model.professionals.Professional;
+import com.filipe.bessa.teste.simples.dental.infra.persistence.ProfessionalRepository;
+import com.filipe.bessa.teste.simples.dental.application.v1.professional.ProfessionalServiceImpl;
+import com.filipe.bessa.teste.simples.dental.domain.exception.ProfessionalNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 
-import com.filipe.bessa.teste.simples.dental.professionals.v1.dto.ProfessionalDetailsDTO;
+import com.filipe.bessa.teste.simples.dental.presentation.v1.professionals.dto.ProfessionalDetailsDTO;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

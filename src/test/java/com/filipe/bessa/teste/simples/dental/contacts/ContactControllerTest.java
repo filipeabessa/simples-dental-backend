@@ -42,7 +42,7 @@ class ContactControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    private final String ENDPOINT_URL = "/contacts";
+    private final String ENDPOINT_URL = "/v1/contacts";
 
     @Test
     void createContactWithSuccess() throws Exception {

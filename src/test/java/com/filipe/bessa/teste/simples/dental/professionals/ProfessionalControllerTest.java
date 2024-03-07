@@ -45,7 +45,7 @@ class ProfessionalControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    private final String ENDPOINT_URL = "/professionals";
+    private final String ENDPOINT_URL = "/v1/professionals";
 
     @Test
     void createProfessionalWithSuccess() throws Exception {
@@ -183,7 +183,7 @@ class ProfessionalControllerTest {
         mockMvc.perform(delete(ENDPOINT_URL + "/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isNoContent());
     }
 
     @Test

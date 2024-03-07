@@ -150,8 +150,7 @@ class ProfessionalControllerTest {
                 1L,
                 "Filipe",
                 Position.DEVELOPER,
-                LocalDate.of(1997,7,21),
-                new ArrayList<>()
+                LocalDate.of(1997,7,21)
         );
 
         var professionalDetailsDTO = new ProfessionalDetailsDTO(

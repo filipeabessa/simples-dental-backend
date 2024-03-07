@@ -52,7 +52,6 @@ public class Professional {
         this.name = createProfessionalDTO.name();
         this.position = createProfessionalDTO.position();
         this.birthDate = createProfessionalDTO.birthDate();
-        this.contacts = createProfessionalDTO.contacts();
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
@@ -88,13 +87,6 @@ public class Professional {
             return new ArrayList<>();
         }
         return List.copyOf(this.contacts);
-    }
-    public void addContact(Contact contact) {
-        this.contacts.add(contact);
-    }
-
-    public void removeContact(Contact contact) {
-        this.contacts.remove(contact);
     }
 
     @Override

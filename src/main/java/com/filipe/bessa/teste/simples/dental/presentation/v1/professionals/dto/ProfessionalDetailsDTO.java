@@ -1,9 +1,9 @@
 package com.filipe.bessa.teste.simples.dental.presentation.v1.professionals.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.filipe.bessa.teste.simples.dental.domain.model.contacts.Contact;
 import com.filipe.bessa.teste.simples.dental.domain.model.professionals.Professional;
 import com.filipe.bessa.teste.simples.dental.domain.model.professionals.Position;
+import com.filipe.bessa.teste.simples.dental.presentation.v1.contacts.dto.ContactDetailsDTO;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDate;
@@ -17,7 +17,7 @@ public record ProfessionalDetailsDTO(
         @JsonFormat(pattern = "dd/MM/yyyy")
         @Schema(type = "string", format = "dd/MM/yyyy")
         LocalDate birthDate,
-        List<Contact> contacts,
+        List<ContactDetailsDTO> contacts,
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
         @Schema(type = "string", format = "dd/MM/yyyy HH:mm:ss")
         LocalDateTime createdAt,
@@ -32,7 +32,7 @@ public record ProfessionalDetailsDTO(
                 professional.getName(),
                 professional.getPosition(),
                 professional.getBirthDate(),
-                professional.getContacts(),
+                professional.getContacts().stream().map(ContactDetailsDTO::new).toList(),
                 professional.getCreatedAt(),
                 professional.getUpdatedAt()
         );

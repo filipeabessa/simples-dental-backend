@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Tag(name = "ProfessionalsController", description = "API de profissionais")
 public interface SwaggerProfessionalController {
@@ -26,7 +27,7 @@ public interface SwaggerProfessionalController {
         @ApiResponse(responseCode = "500", description = "Erro interno no servidor")
     })
     @PostMapping
-    ResponseEntity<ProfessionalDetailsDTO> createProfessional(CreateProfessionalDTO createProfessionalDTO);
+    ResponseEntity<ProfessionalDetailsDTO> createProfessional(@RequestBody CreateProfessionalDTO createProfessionalDTO);
 
     @Operation(summary = "Busca um profissional")
     @ApiResponses(value = {
@@ -55,7 +56,7 @@ public interface SwaggerProfessionalController {
         @ApiResponse(responseCode = "500", description = "Erro interno no servidor")
     })
     @PutMapping
-    ResponseEntity<ProfessionalDetailsDTO> updateProfessional(UpdateProfessionalDTO updateProfessionalDTO);
+    ResponseEntity<ProfessionalDetailsDTO> updateProfessional(UpdateProfessionalDTO updateProfessionalDTO   );
 
     @Operation(summary = "Deleta um profissional")
     @ApiResponses(value = {

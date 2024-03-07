@@ -1,6 +1,5 @@
 package com.filipe.bessa.teste.simples.dental.application.v1.professional;
 
-import com.filipe.bessa.teste.simples.dental.domain.model.contacts.Contact;
 import com.filipe.bessa.teste.simples.dental.domain.model.professionals.Position;
 import com.filipe.bessa.teste.simples.dental.domain.model.professionals.Professional;
 import com.filipe.bessa.teste.simples.dental.infra.persistence.ProfessionalRepository;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -47,12 +45,10 @@ public class ProfessionalServiceImpl implements ProfessionalService {
         String name = updateProfessionalDTO.name();
         Position position = updateProfessionalDTO.position();
         LocalDate birthDate = updateProfessionalDTO.birthDate();
-        List<Contact> contacts = updateProfessionalDTO.contacts();
 
         professional.setName(name != null ? name : professional.getName());
         professional.setPosition(position != null ? position : professional.getPosition());
         professional.setBirthDate(birthDate != null ? birthDate : professional.getBirthDate());
-        professional.setContacts(contacts != null ? contacts : professional.getContacts());
         professional.setUpdatedAt(LocalDateTime.now());
 
         return new ProfessionalDetailsDTO(professionalRepository.save(professional));

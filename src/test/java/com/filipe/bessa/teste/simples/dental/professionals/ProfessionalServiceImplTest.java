@@ -136,8 +136,7 @@ class ProfessionalServiceImplTest {
                 1L,
                 "Gabriel",
                 Position.DESIGNER,
-                LocalDate.of(1998,7,21),
-                new ArrayList<>()
+                LocalDate.of(1998,7,21)
         );
         LocalDateTime updatedAt = LocalDateTime.now();
 
@@ -174,8 +173,7 @@ class ProfessionalServiceImplTest {
                 1L,
                 "Gabriel",
                 Position.DESIGNER,
-                LocalDate.of(1998,7,21),
-                new ArrayList<>()
+                LocalDate.of(1998,7,21)
         );
 
         when(professionalRepository.findById(1L)).thenReturn(Optional.empty());

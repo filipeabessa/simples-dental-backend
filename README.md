@@ -9,25 +9,26 @@ O objetivo deste teste é avaliar a capacidade do candidato em desenvolver uma A
 ## Arquitetura
 A aplicação foi desenvolvida se baseando na Clean Architecture, com a separação de responsabilidades em camadas.
 
-- **application:**
-  - camada responsável pela regra de negócio da aplicação;
-  - composta por:
-    - services;
-- domain:
-  - camada responsável pelas entidades e objetos de valor da aplicação;
-  - composta por:
-    - entities;
-    - enums;
-- **infrastructure:**
-  - camada responsável pela comunicação com o banco de dados e por configurações da aplicação;
-  - composta por:
-    - exceptions;
-    - JPA repositories;
-- **presentation:**
-    - camada responsável pela exposição da API e pela conversão de dados.
-    - composta por:
-      - controllers;
-      - DTOs;
+#### **Application:**
+Camada responsável pela regra de negócio da aplicação. Essa camada é composta por:
+
+  - services
+
+### **Domain**:
+Camada responsável pelas entidades e objetos de valor da aplicação. Essa camada é composta por:
+  - entities
+  - enums
+
+### **Infrastructure:**
+Camada responsável pela comunicação com o banco de dados e por configurações da aplicação. Essa camada é composta por:
+
+  - exceptions
+  - JPA repositories
+
+### **Presentation:**
+Camada responsável pela exposição da API e pela conversão de dados. Essa camada é composta por:
+  - controllers
+  - DTOs
 
 ## Tecnologias Utilizadas
 

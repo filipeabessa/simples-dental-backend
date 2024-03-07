@@ -6,6 +6,29 @@ O objetivo deste teste é avaliar a capacidade do candidato em desenvolver uma A
 ## Requisitos
 - [Requisitos](https://docs.google.com/document/d/1PQOAqM1Wmk_TdLmYzli2eS_CwRc4Z4QlrtMzDQkYd7k/edit?usp=sharing)
 
+## Arquitetura
+A aplicação foi desenvolvida se baseando na Clean Architecture, com a separação de responsabilidades em camadas.
+
+- **application:**
+  - camada responsável pela regra de negócio da aplicação;
+  - composta por:
+    - services;
+- domain:
+  - camada responsável pelas entidades e objetos de valor da aplicação;
+  - composta por:
+    - entities;
+    - enums;
+- **infrastructure:**
+  - camada responsável pela comunicação com o banco de dados e por configurações da aplicação;
+  - composta por:
+    - exceptions;
+    - JPA repositories;
+- **presentation:**
+    - camada responsável pela exposição da API e pela conversão de dados.
+    - composta por:
+      - controllers;
+      - DTOs;
+
 ## Tecnologias Utilizadas
 
 - **Java 17**

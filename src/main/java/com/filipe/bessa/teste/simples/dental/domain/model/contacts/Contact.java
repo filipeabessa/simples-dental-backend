@@ -27,7 +27,6 @@ public class Contact {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "professional_id")
     private Professional professional;
 
     private String name;
@@ -82,5 +81,9 @@ public class Contact {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setCreatedAt(LocalDateTime now) {
+        this.createdAt = now;
     }
 }

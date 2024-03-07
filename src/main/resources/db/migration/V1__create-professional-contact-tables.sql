@@ -10,6 +10,7 @@ CREATE TABLE professionals(
 CREATE TABLE contacts(
                          id SERIAL PRIMARY KEY,
                          professional_id BIGINT NOT NULL,
+                         name VARCHAR(255) NOT NULL,
                          contact VARCHAR(255) NOT NULL,
                          created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                          updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

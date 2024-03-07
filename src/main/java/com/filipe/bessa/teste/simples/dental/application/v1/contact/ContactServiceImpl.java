@@ -28,6 +28,8 @@ public class ContactServiceImpl implements ContactService {
 
         Contact contact = new Contact(createContactDTO);
         contact.setProfessional(professional);
+        contact.setCreatedAt(LocalDateTime.now());
+        contact.setUpdatedAt(LocalDateTime.now());
 
         var createdContact = contactRepository.save(contact);
 
